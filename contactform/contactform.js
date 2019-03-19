@@ -99,18 +99,14 @@ jQuery(document).ready(function($) {
       url: action,
       data: str,
       success: function(msg) {
-        // alert(msg);
-        if (msg == 'OK') {
-          $("#sendmessage").addClass("show");
-          $("#errormessage").removeClass("show");
-          $('.contactForm').find("input, textarea").val("");
-        } else {
-          $("#sendmessage").removeClass("show");
-          $("#errormessage").addClass("show");
-          $('#errormessage').html(msg);
-        }
-
-      }
+         
+         swal("Obrigado por sua mensagem!", "Entraremos em contato muito em breve... :)", "success");
+         setTimeout(function(){ location.reload(); }, 5000);
+      },
+      error: function() { 
+        swal("Mensagem falhou!", "Por favor, envie um e-mail para say@mattcode.co", "error"); 
+        setTimeout(function(){ location.reload(); }, 5000);
+      }   
     });
     return false;
   });
